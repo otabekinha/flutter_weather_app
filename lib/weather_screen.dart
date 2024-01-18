@@ -3,9 +3,31 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:weather_app/additional_information.dart';
 import 'package:weather_app/weather_forecast.dart';
+import 'package:http/http.dart' as http;
 
-class WeatherScreen extends StatelessWidget {
+class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
+
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getCurrentWeather();
+  }
+
+  Future getCurrentWeather() async {
+    final res = await http.get(
+      Uri.parse(
+        "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=016f0c629214b78e12bec1fd128aaacd",
+      ),
+    );
+
+    print(res.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,29 +113,29 @@ class WeatherScreen extends StatelessWidget {
               child: Row(
                 children: [
                   WeatherForecast(
-                    label: '03:00',
+                    time: '03:00',
                     icon: Icons.cloud,
-                    value: '301.54',
+                    temperature: '301.54',
                   ),
                   WeatherForecast(
-                    label: '04:00',
+                    time: '04:00',
                     icon: Icons.sunny,
-                    value: '12.54',
+                    temperature: '12.54',
                   ),
                   WeatherForecast(
-                    label: '5:00',
+                    time: '5:00',
                     icon: Icons.sunny_snowing,
-                    value: '100.54',
+                    temperature: '100.54',
                   ),
                   WeatherForecast(
-                    label: '6:00',
+                    time: '6:00',
                     icon: Icons.sunny_snowing,
-                    value: '14.11',
+                    temperature: '14.11',
                   ),
                   WeatherForecast(
-                    label: '7:00',
+                    time: '7:00',
                     icon: Icons.cloud,
-                    value: '29.54',
+                    temperature: '29.54',
                   ),
                 ],
               ),
