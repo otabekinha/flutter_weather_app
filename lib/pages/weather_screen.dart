@@ -3,9 +3,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/additional_information.dart';
-import 'package:weather_app/change_theme_button_widget.dart';
-import 'package:weather_app/weather_forecast.dart';
+import 'package:weather_app/widgets/additional_information.dart';
+import 'package:weather_app/widgets/change_theme_button_widget.dart';
+import 'package:weather_app/widgets/weather_forecast.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherScreen extends StatefulWidget {
