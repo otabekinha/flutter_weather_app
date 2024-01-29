@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/additional_information.dart';
+import 'package:weather_app/change_theme_button_widget.dart';
 import 'package:weather_app/weather_forecast.dart';
 import 'package:http/http.dart' as http;
 
@@ -44,6 +45,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mode = MediaQuery.of(context).platformBrightness == Brightness.dark
+        ? 'DarkTheme'
+        : 'LightTheme';
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -63,6 +67,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               Icons.refresh,
             ),
           ),
+          const ChangeThemeButtonWidget(),
         ],
       ),
       body: FutureBuilder(
